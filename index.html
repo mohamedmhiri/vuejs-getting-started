@@ -24,18 +24,20 @@
             message: 'Hello Vue.js!',
             names: ['Mohamed', 'Ahmed', 'Omar']
         }
-        function getMessage () {
-            console.log(data.message)
-        }
         new Vue({
             el: '#app',
-            data: data
+            data: data,
+            mounted () {
+                document.querySelector('#button').addEventListener('click', () => {
+                    let name = document.querySelector('#input')
+                    data.names.push(name.value)
+                    name.value = ''
+                })
+            }
         })
-        document.querySelector('#button').addEventListener('click', () => {
-            let name = document.querySelector('#input')
-            data.names.push(name.value)
-            name.value = ''
-        })
+        function pusher() {
+            
+        }
     </script>
 </body>
 
