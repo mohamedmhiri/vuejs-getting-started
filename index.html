@@ -11,12 +11,18 @@
 
 <body>
     <div id="app">
-        <p>{{ message }}</p>
-        <input type="text" v-model="message">
+        <h1>{{ message }}!!!</h1>
+        <h2>Add a new person</h2>
+        <input type="text" id="input">
+        <button id="button">Add</button>
+        <ul>
+            <li v-for="name in names" v-text="name"></li>
+        </ul>
     </div>
     <script>
         let data = {
-            message: 'Hello Vue.js!'
+            message: 'Hello Vue.js!',
+            names: ['Mohamed', 'Ahmed', 'Omar']
         }
         function getMessage () {
             console.log(data.message)
@@ -24,6 +30,11 @@
         new Vue({
             el: '#app',
             data: data
+        })
+        document.querySelector('#button').addEventListener('click', () => {
+            let name = document.querySelector('#input')
+            data.names.push(name.value)
+            name.value = ''
         })
     </script>
 </body>
