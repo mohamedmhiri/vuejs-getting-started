@@ -27,7 +27,7 @@ new Vue({
     methods: {
         filter() {
             return this.tasks.filter(data => {
-                new RegExp(`.*${this.txt}`).test(data.desctiption)
+                new RegExp(`.*${this.txt}.*`).test(data.desctiption)
             })
         }
     }
