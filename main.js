@@ -1,34 +1,46 @@
-Vue.component('task', {
-    template: `<input type="text" @keyUp="filter(txt)">
-               <task-list></task-list>`
+Vue.component('main-page', {
+    template: `
+        <input type="text" @keyUp="filter()">
+        <task-list></task-list>
+    `
 })
 Vue.component('task-list', {
-    template: `<ul>
-                <li v-for="task in tasks" v-text="task.description"></li>
-               </ul>`
+    template: `
+            <ul>
+                <task v-for="task in tasks" v-bind:key="task.id">{{ task.description }}</task>
+            </ul>    
+    `,
+    data() {
+        return {
+            tasks: [
+                { description: 'Wake Up', done: true },
+                { description: 'Coding', done: false },
+                { description: 'practising sport', done: false },
+                { description: 'Helping someone', done: false },
+                { description: 'Learning VueJs', done: true },
+                { description: 'Pushing code on github', done: true },
+                { description: 'Taking dinner', done: false },
+
+            ]
+        }
+    }
+})
+Vue.component('task', {
+    template: `<li><slot></slot></li>`
 })
 
 let data = {
-    tasks : [
-        { desctiption: 'Wake Up', done: true },
-        { desctiption: 'Coding', done: false },
-        { desctiption: 'practising sport', done: false },
-        { desctiption: 'Helping someone', done: false },
-        { desctiption: 'Learning VueJs', done: true },
-        { desctiption: 'Pushing code on github', done: true },
-        { desctiption: 'Taking dinner', done: false },
-
-    ],
-    txt : ''
+    txt: ''
 }
 new Vue({
     el: '#root',
     data: data,
     methods: {
         filter() {
-            return this.tasks.filter(data => {
-                new RegExp(`.*${this.txt}.*`).test(data.desctiption)
-            })
+            console.log('ok')
+            /*return this.tasks.filter(data => {
+                new RegExp(`.*${this.txt}.*`).test(data.description)
+            })*/
         }
     }
 })
