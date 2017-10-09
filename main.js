@@ -1,6 +1,9 @@
+Vue.component('task', {
+    template: `<input type="text" @keyUp="filter(txt)">
+               <task-list></task-list>`
+})
 Vue.component('task-list', {
-    template: `<input type="text" v-model="txt" @keyUp="filter(txt)"></input>
-               <ul>
+    template: `<ul>
                 <li v-for="task in tasks" v-text="task.description"></li>
                </ul>`
 })
