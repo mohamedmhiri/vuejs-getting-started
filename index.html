@@ -14,7 +14,7 @@
         <h1>{{ message }}!!!</h1>
         <h2>Add a new person</h2>
         <input type="text" v-model="newName">
-        <button v-on:click="onClick()">Add</button>
+        <button :title="title" @click="onClick()">Add</button>
         <!--v-on:mouseover="onHover()"-->
         <ul>
             <li v-for="name in names" v-text="name"></li>
@@ -24,7 +24,8 @@
         let data = {
             newName: '',
             message: 'Hello Vue.js!',
-            names: ['Mohamed', 'Ahmed', 'Omar']
+            names: ['Mohamed', 'Ahmed', 'Omar'],
+            title: 'new title',
         }
         new Vue({
             el: '#app',
