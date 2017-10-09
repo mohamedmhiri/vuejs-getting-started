@@ -13,14 +13,16 @@
     <div id="app">
         <h1>{{ message }}!!!</h1>
         <h2>Add a new person</h2>
-        <input type="text" id="input">
-        <button v-on:click="onClick()" v-on:mouseover="onHover()">Add</button>
+        <input type="text" v-model="newName">
+        <button v-on:click="onClick()">Add</button>
+        <!--v-on:mouseover="onHover()"-->
         <ul>
             <li v-for="name in names" v-text="name"></li>
         </ul>
     </div>
     <script>
         let data = {
+            newName: '',
             message: 'Hello Vue.js!',
             names: ['Mohamed', 'Ahmed', 'Omar']
         }
@@ -28,19 +30,20 @@
             el: '#app',
             data: data,
             // search for mounted
-            mounted () {
+            /*mounted () {
                 document.querySelector('#button').addEventListener('click', () => {
                     let name = document.querySelector('#input')
                     data.names.push(name.value)
                     name.value = ''
                 })
-            },
+            },*/
             methods: {
-                onHover() {
+                /*onHover() {
                     alert('on hover')
-                },
+                },*/
                 onClick() {
-                    alert('on click')
+                    this.names.push(this.newName)
+                    this.newName = ''
                 }
             }
         })
