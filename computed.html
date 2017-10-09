@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+        .blue-color {
+            color: #123456;
+        }
+        .purple-color {
+            color: #521485
+        }
+    </style>
+    <title>Vuejs</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>All Tasks</h1>
+        <ul>
+            <li v-for="task in tasks" v-text="task.description"></li>
+        </ul>
+    </div>
+    <script>
+        let data = {
+            tasks: [
+                {description: 'Wake Up', done: true},
+                {description: 'Coding', done: false},
+                {description: 'practising sport', done: false},
+                {description: 'Helping someone', done: false},
+                {description: 'Learning VueJs', done: true},
+                {description: 'Pushing code on github', done: true},
+                {description: 'Taking dinner', done: false},
+                
+            ]
+        }
+        new Vue({
+            el: '#app',
+            data: data,
+            methods: {
+                
+            },
+            computed: {
+                
+            }
+        })
+        function pusher() {
+            
+        }
+    </script>
+</body>
+
+</html>
