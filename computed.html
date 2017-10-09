@@ -10,6 +10,7 @@
         .blue-color {
             color: #123456;
         }
+
         .purple-color {
             color: #521485
         }
@@ -23,32 +24,37 @@
         <ul>
             <li v-for="task in tasks" v-text="task.description"></li>
         </ul>
+        <h2>Incomplete Tasks</h2>
+        <ul>
+            <li v-for="task in incompleteTasks" v-text="task.description"></li>
+        </ul>
     </div>
     <script>
         let data = {
             tasks: [
-                {description: 'Wake Up', done: true},
-                {description: 'Coding', done: false},
-                {description: 'practising sport', done: false},
-                {description: 'Helping someone', done: false},
-                {description: 'Learning VueJs', done: true},
-                {description: 'Pushing code on github', done: true},
-                {description: 'Taking dinner', done: false},
-                
+                { description: 'Wake Up', done: true },
+                { description: 'Coding', done: false },
+                { description: 'practising sport', done: false },
+                { description: 'Helping someone', done: false },
+                { description: 'Learning VueJs', done: true },
+                { description: 'Pushing code on github', done: true },
+                { description: 'Taking dinner', done: false },
             ]
         }
         new Vue({
             el: '#app',
             data: data,
             methods: {
-                
+
             },
             computed: {
-                
+                incompleteTasks() {
+                    return this.tasks.filter(data => !data.done)
+                }
             }
         })
         function pusher() {
-            
+
         }
     </script>
 </body>
