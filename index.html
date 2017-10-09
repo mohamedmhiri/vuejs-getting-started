@@ -6,19 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://unpkg.com/vue"></script>
+    <style>
+        .blue-color {
+            color: #123456;
+        }
+        .purple-color {
+            color: #521485
+        }
+    </style>
     <title>Vuejs</title>
 </head>
 
 <body>
     <div id="app">
-        <h1>{{ message }}!!!</h1>
+        <h1 :class="h_color">{{ message }}!!!</h1>
         <h2>Add a new person</h2>
         <input type="text" v-model="newName">
         <button :title="title" @click="onClick()">Add</button>
         <!--v-on:mouseover="onHover()"-->
-        <ul>
+        <!--<ul>
             <li v-for="name in names" v-text="name"></li>
-        </ul>
+        </ul>-->
     </div>
     <script>
         let data = {
@@ -26,6 +34,7 @@
             message: 'Hello Vue.js!',
             names: ['Mohamed', 'Ahmed', 'Omar'],
             title: 'new title',
+            h_color: 'blue-color'
         }
         new Vue({
             el: '#app',
@@ -43,8 +52,7 @@
                     alert('on hover')
                 },*/
                 onClick() {
-                    this.names.push(this.newName)
-                    this.newName = ''
+                    this.h_color = 'purple-color'
                 }
             }
         })
