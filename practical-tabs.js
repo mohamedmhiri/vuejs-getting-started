@@ -45,9 +45,6 @@ Vue.component('tab', {
         },
         selected: {
             default: false
-        },
-        content: {
-            default: ''
         }
     },
     data () {
