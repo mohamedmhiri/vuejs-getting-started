@@ -7,7 +7,7 @@ Vue.component('coupon', {
     `,
     methods: {
         onCouponApplied() {
-            Event.$emit('applied')
+            Event.$emit('show')
         },
         hideHeader () {
             Event.$emit('hide')
@@ -18,7 +18,7 @@ Vue.component('coupon', {
 Vue.component('moom-header', {
     template: `<h1 v-show="show"><slot></slot></h1>`,
     created () {
-        Event.$on('applied', () => {
+        Event.$on('show', () => {
             this.show = true
         })
         Event.$on('hide', () => {
