@@ -4,7 +4,7 @@ Vue.component('tabs', {
 <div class="tabs is-boxed">
   <ul>
     <li v-for="tab in tabs" v-bind:class="{'is-active': tab.isActive}">
-        <a href="#" @click="selectTab(tab)">
+        <a v-bind:href="tab.href" @click="selectTab(tab)">
             {{tab.name}}
         </a>
     </li>
@@ -21,7 +21,7 @@ Vue.component('tabs', {
         }
     },
     mounted () {
-        console.log(this.$children)
+        //console.log(this.$children)
     },
     created () {
         this.tabs = this.$children
@@ -54,6 +54,11 @@ Vue.component('tab', {
     },
     mounted () {
         this.isActive = this.selected
+    },
+    computed: {
+        href () {
+            return `#${this.name.toLowerCase().replace(/ /g, '-')}`
+        }
     }
 })
 
