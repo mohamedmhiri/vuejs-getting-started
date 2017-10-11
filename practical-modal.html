@@ -8,15 +8,16 @@
 
 
     <title>Learning Vuejs</title>
-    <style></style>
+    <style>
+    </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
 </head>
 
 <body>
     <div id="root">
-        <moom-modal></moom-modal>
+        <moom-modal v-if="showModal" @close="showModal = false"></moom-modal>
         <div class="container is-fluid">
-            <moom-button></moom-button>
+            <a class="button is-dark" @click="showModal = true">Dark</a>
         </div>
     </div>
     <script src="https://unpkg.com/vue"></script>

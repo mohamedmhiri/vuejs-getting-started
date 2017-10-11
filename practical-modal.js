@@ -7,14 +7,9 @@ Vue.component('moom-modal', {
                     Peace be upon you
                 </div>
             </div>
-            <button class="modal-close is-large" aria-label="close"></button>
+            <button class="modal-close is-large" @click="$emit('close')"aria-label="close"></button>
         </div>
-    `,
-    data () {
-        return {
-            showModal: false
-        }
-    }
+    `
 })
 
 Vue.component('moom-button', {
@@ -24,5 +19,8 @@ Vue.component('moom-button', {
 })
 
 new Vue({
-    el: '#root'
+    el: '#root',
+    data : {
+        showModal: false
+    }
 })
