@@ -3,8 +3,8 @@ Vue.component('tabs', {
 <div>
 <div class="tabs is-boxed">
   <ul>
-    <li v-for="tab in tabs">
-        <a href="#">
+    <li v-for="tab in tabs" v-bind:class="{'is-active': tab.isActive}">
+        <a href="#" @click="selectTab(tab)">
             {{tab.name}}
         </a>
     </li>
@@ -25,16 +25,35 @@ Vue.component('tabs', {
     },
     created () {
         this.tabs = this.$children
+    },
+    methods: {
+        selectTab(data) {
+            this.tabs.forEach((tab) => {
+                tab.isActive = (data.name === tab.name) 
+            })
+        }
     }
 })
 Vue.component('tab', {
     template: `
-        <div><slot></slot></div>
+        <div v-show="isActive"><slot></slot></div>
     `,
+    // In general we consider the props that the component accept to be mutable
     props: {
         name: {
             required: true
+        },
+        selected: {
+            default: false
         }
+    },
+    data () {
+        return {
+            isActive: false
+        }        
+    },
+    mounted () {
+        this.isActive = this.selected
     }
 })
 
